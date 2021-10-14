@@ -45,7 +45,7 @@ const prizesData = [
 const router = express.Router();
 
 // REMOVE CONNECTION URI BEFORE COMMITTING
-mongoose.connect("mongodb+srv://dev-test-user:ihigtj80k@cluster0-cfetv.mongodb.net/mossDB");
+mongoose.connect("");
 mongoose.connection.once("open", () => {
   console.log("...Connected to DB...")
 });
