@@ -1,51 +1,54 @@
+const dotenv = require('dotenv').config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const Prize = require("../models/Prize");
+
 
 const prizesData = [
   { 
     name: "Vintage LP Player", 
     description: "A vintage record player with a collection of rare LPs",
-    imageUrl: "lpUrl",
+    imageUrl: "img-1.png",
     stock: 5
   },
-  { 
+  {
     name: "iPhone", 
     description: "A brand new Apple iPhone Pro Max",
-    imageUrl: "iphoneUrl",
+    imageUrl: "img-2.png",
     stock: 5
   },
   { 
     name: "In-Home Karaoke System", 
     description: "An in-home karaoke system with installation included",
-    imageUrl: "karaokeUrl",
+    imageUrl: "img-3.png",
     stock: 5
   },
   { 
     name: "One Year of Roadside Assistance", 
     description: "A full year's membership in our Platinum Roadside Assistance Program",
-    imageUrl: "roadsideURL",
+    imageUrl: "img-4.jpg",
     stock: 5
   },
   { 
     name: "Mystery Prize", 
     description: "What is it? Who knows!",
-    imageUrl: "mysteryURL",
+    imageUrl: "img-5.png",
     stock: 5
   },
   { 
     name: "Playstation 5", 
     description: "A brand new PS5 with Dualsense wireless controller",
-    imageUrl: "ps5URL",
+    imageUrl: "img-6.png",
     stock: 5
   },
   
 ];
 
-const router = express.Router();
+const router = express.Router(); 
 
-// REMOVE CONNECTION URI BEFORE COMMITTING
-mongoose.connect("");
+
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.cfetv.mongodb.net/mossDB?retryWrites=true&w=majority`);
 mongoose.connection.once("open", () => {
   console.log("...Connected to DB...")
 });
